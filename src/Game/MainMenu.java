@@ -6,10 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class MainMenu implements Runnable{
+public class MainMenu{
 
-    private JFrame frame;
-    private JPanel panel;
+    protected JFrame frame;
+    protected JPanel panel;
 
     public MainMenu() {
 
@@ -31,15 +31,15 @@ public class MainMenu implements Runnable{
         panel.add(historyButton());
         panel.add(settingsButton());
         panel.add(exitButton());
+        CentralHexagon centralHexagon = new CentralHexagon(250);
+        centralHexagon.setBounds(0, 0, 1536, 864);
+        panel.add(centralHexagon);
+
 
         frame.add(panel);
         frame.setVisible(true);
     }
 
-    @Override
-    public void run() {
-
-    }
     public JButton startButton() {
         MakeButton startButton = new MakeButton("Start");
         startButton.setBounds(panel.getWidth()/2-175,600,350,90);
@@ -47,7 +47,7 @@ public class MainMenu implements Runnable{
         startButton.setBorder(BorderFactory.createEtchedBorder());
         startButton.setBorder(BorderFactory.createRaisedBevelBorder());
 
-        startButton.addActionListener(e -> new GamePanel());
+        startButton.addActionListener(e -> new EnterDetails());
 
         return startButton;
     }
