@@ -2,8 +2,7 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 
 public class MainMenu{
@@ -12,6 +11,7 @@ public class MainMenu{
     protected JPanel panel;
 
     public MainMenu() {
+
 
         frame = new JFrame();
         frame.setTitle("Super Hexagon");
@@ -34,7 +34,9 @@ public class MainMenu{
         CentralHexagon centralHexagon = new CentralHexagon(250);
         centralHexagon.setBounds(0, 0, 1536, 864);
         panel.add(centralHexagon);
-
+        DrawLine drawLine = new DrawLine(250);
+        drawLine.setBounds(-1000, -1000, 15360, 8640);
+        panel.add(drawLine);
 
         frame.add(panel);
         frame.setVisible(true);
