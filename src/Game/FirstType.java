@@ -6,8 +6,8 @@ import java.awt.*;
 public class FirstType extends Obstacles {
     private double theta=0;
 
-    public FirstType(double radius,int c) {
-        super(radius,c);
+    public FirstType(double radius) {
+        super(radius);
         Timer timer = new Timer(10, e -> {
             this.radius-=0.05;
             repaint();

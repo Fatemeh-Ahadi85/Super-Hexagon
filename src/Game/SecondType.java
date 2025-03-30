@@ -7,10 +7,10 @@ public class SecondType extends Obstacles{
     private double theta=60;
 
 
-    protected SecondType(double radius,int c) {
-        super(radius,c);
+    protected SecondType(double radius) {
+        super(radius);
         Timer timer = new Timer(10, e -> {
-            this.radius-=0.05;
+            this.radius-=0.25;
             repaint();
         });
         timer.start();

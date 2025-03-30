@@ -2,7 +2,6 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
 
 public class GamePanel extends JPanel {
 
@@ -51,9 +50,7 @@ public class GamePanel extends JPanel {
 
         panel.setComponentZOrder(mahlar, 0);
         Timer timer1 = new Timer(5000,e ->{
-            Random random = new Random();
-            int c = random.nextInt(6);
-            Obstacles obstacles = new Obstacles(75,c);
+            Obstacles obstacles = new Obstacles(75);
             JLabel newObstacles = obstacles.generateObstacles();
             newObstacles.setBounds(-1000, -1000, 3000, 3000);
             panel.add(newObstacles);
@@ -62,9 +59,7 @@ public class GamePanel extends JPanel {
         });
         timer1.start();
 
-
         frame.add(panel);
         frame.setVisible(true);
     }
-
 }
