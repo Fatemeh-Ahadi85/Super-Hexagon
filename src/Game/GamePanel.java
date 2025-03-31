@@ -2,13 +2,13 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
 
     protected JFrame frame;
     protected JPanel panel;
     protected double theta=0;
-
 
     public GamePanel() {
         Timer timer = new Timer(25,e ->{
@@ -47,15 +47,15 @@ public class GamePanel extends JPanel {
         Mahlar mahlar = new Mahlar(75);
         mahlar.setBounds(0, 0, 1536, 864);
         panel.add(mahlar);
+        ArrayList<Obstacles>obstaclesArrayList = new ArrayList<>();
 
         panel.setComponentZOrder(mahlar, 0);
         Timer timer1 = new Timer(5000,e ->{
-            Obstacles obstacles = new Obstacles(75);
+            Obstacles obstacles = new Obstacles(75);//شاید استاتیک باشه بهتره چکش کن یادت نره
             JLabel newObstacles = obstacles.generateObstacles();
             newObstacles.setBounds(-1000, -1000, 3000, 3000);
             panel.add(newObstacles);
             panel.setComponentZOrder(newObstacles, 1);
-
         });
         timer1.start();
 

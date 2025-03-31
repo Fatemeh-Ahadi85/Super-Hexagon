@@ -11,11 +11,17 @@ public class Mahlar extends JLabel {
     protected double theta=0;
     protected double CX=786;
     protected double CY=432;
-    protected int r;
+    protected double radius;
+    public double centerX;
+    public double centerY;
+    private Point p1 ;
+    private Point p2 ;
+    private Point p3 ;
 
 
-    public Mahlar(int r) {
-        this.r=r;
+    public Mahlar(double r) {
+
+        this.radius=r;
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if(e.getX()>CX){
@@ -49,9 +55,12 @@ public class Mahlar extends JLabel {
         int x3=778;
         int y3=360;
 
-        Point p1 = RotatePoint(x1,y1);
-        Point p2 = RotatePoint(x2,y2);
-        Point p3 = RotatePoint(x3,y3);
+        p1 = RotatePoint(x1,y1);
+        p2 = RotatePoint(x2,y2);
+        p3 = RotatePoint(x3,y3);
+
+        centerX = (p1.x+p2.x+p3.x)/3;
+        centerY = (p1.y+p2.y+p3.y)/3;
 
         Polygon triangle = new Polygon();
         triangle.addPoint(p1.x,p1.y);

@@ -1,23 +1,13 @@
 package Game;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class FirstType extends Obstacles {
-    private double theta=0;
-
+    private double theta = 0;
     public FirstType(double radius) {
         super(radius);
-        Timer timer = new Timer(10, e -> {
-            this.radius-=0.25;
-            if (this.radius <= 0) {
-                this.radius = 0;
-            }
-            repaint();
-        });
-        timer.start();
-    }
 
+    }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 

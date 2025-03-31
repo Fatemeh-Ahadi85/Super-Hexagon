@@ -1,6 +1,8 @@
 package Game;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Obstacles extends JLabel {
@@ -9,12 +11,17 @@ public class Obstacles extends JLabel {
     protected double CY = 1432;
     protected double radius;
     protected Random random;
-    protected double save;
 
     protected Obstacles(double radius) {
-        save = radius;
+
         this.radius = radius;
         random = new Random();
+        Timer timer = new Timer(10, e -> {
+            this.radius -= 0.25;
+
+            repaint();
+        });
+        timer.start();
 
     }
     public JLabel generateObstacles() {
@@ -31,5 +38,15 @@ public class Obstacles extends JLabel {
             obstacle=new FirstType(radius);
         }
         return obstacle;
+    }
+    public void checkObstacles(Panel panel,ArrayList<Obstacles> obstaclesArrayList) {
+        if(radius<=7.5){
+            panel.remove(this);
+            panel.revalidate();
+            panel.repaint();
+        }
+        else if(!obstaclesArrayList.contains(this)){
+            obstaclesArrayList.add(this);
+        }
     }
 }
