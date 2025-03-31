@@ -1,8 +1,10 @@
 package Game;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
-
+import java.io.IOException;
 
 
 public class MainMenu{
@@ -85,6 +87,13 @@ public class MainMenu{
         settingsButton.setBorder(BorderFactory.createEtchedBorder());
         settingsButton.setBorder(BorderFactory.createRaisedBevelBorder());
 
+        settingsButton.addActionListener(e -> {
+            try {
+                new SettingPage();
+            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+                ex.printStackTrace();}
+        });
+
         return settingsButton;
     }
     public JButton exitButton() {
@@ -93,6 +102,10 @@ public class MainMenu{
         exitButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         exitButton.setBorder(BorderFactory.createEtchedBorder());
         exitButton.setBorder(BorderFactory.createRaisedBevelBorder());
+
+        exitButton.addActionListener(e -> {
+            System.exit(0);
+        });
 
         return exitButton;
     }

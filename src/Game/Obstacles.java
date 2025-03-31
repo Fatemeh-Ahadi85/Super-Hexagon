@@ -9,8 +9,10 @@ public class Obstacles extends JLabel {
     protected double CY = 1432;
     protected double radius;
     protected Random random;
+    protected double save;
 
     protected Obstacles(double radius) {
+        save = radius;
         this.radius = radius;
         random = new Random();
 

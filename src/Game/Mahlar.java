@@ -19,10 +19,10 @@ public class Mahlar extends JLabel {
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if(e.getX()>CX){
-                    theta+=60;
+                    theta-=60;
                 }
                 else {
-                    theta-=60;
+                    theta+=60;
                 }
                 repaint();
             }

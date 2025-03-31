@@ -11,7 +11,7 @@ public class ThirdType extends Obstacles {
         super(radius);
         m = random.nextInt(6);
         Timer timer = new Timer(10, e -> {
-            this.radius -= 0.05;
+            this.radius -= 0.25;
             if (this.radius <= 0) {
                 this.radius = 0;
             }

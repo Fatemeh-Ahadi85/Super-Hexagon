@@ -11,6 +11,9 @@ public class SecondType extends Obstacles{
         super(radius);
         Timer timer = new Timer(10, e -> {
             this.radius-=0.25;
+            if (this.radius <= 0) {
+                this.radius = 0;
+            }
             repaint();
         });
         timer.start();
