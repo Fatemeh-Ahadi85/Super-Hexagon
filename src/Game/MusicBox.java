@@ -16,6 +16,7 @@ public class MusicBox extends SettingBoxes{
         clip = AudioSystem.getClip();
         clip.open(stream);
         clip.loop(Clip.LOOP_CONTINUOUSLY);
+        checkBox = new JCheckBox("Enable Theme Music",true);
 
     }
 
@@ -29,11 +30,9 @@ public class MusicBox extends SettingBoxes{
     @Override
     public JCheckBox box(){
 
-        checkBox = new JCheckBox("Enable Theme Music",true);
         checkBox.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         checkBox.setForeground(Color.black);
         checkBox.setFocusPainted(false);
-
 
         checkBox.addActionListener(e -> {
             if (checkBox.isSelected()&&!clip.isRunning()) {

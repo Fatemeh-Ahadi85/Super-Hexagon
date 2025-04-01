@@ -51,11 +51,21 @@ public class GamePanel extends JPanel {
 
         panel.setComponentZOrder(mahlar, 0);
         Timer timer1 = new Timer(5000,e ->{
-            Obstacles obstacles = new Obstacles(75);//شاید استاتیک باشه بهتره چکش کن یادت نره
-            JLabel newObstacles = obstacles.generateObstacles();
-            newObstacles.setBounds(-1000, -1000, 3000, 3000);
-            panel.add(newObstacles);
-            panel.setComponentZOrder(newObstacles, 1);
+            Obstacles obstacles1 = new Obstacles(75);
+            JComponent ob = obstacles1.generateObstacles();
+            ob.setBounds(-1000, -1000, 3000, 3000);
+            System.out.println("NewObstacles Bounds: " + getBounds());
+
+            panel.add(ob);
+
+            panel.revalidate();
+            panel.repaint();
+
+//            Obstacles obstacles = new Obstacles(75);//شاید استاتیک باشه بهتره چکش کن یادت نره
+//             newObstacles = obstacles.generateObstacles();
+//            newObstacles.setBounds(-1000, -1000, 3000, 3000);
+//            panel.add(newObstacles);
+//            panel.setComponentZOrder(newObstacles, 1);
         });
         timer1.start();
 
