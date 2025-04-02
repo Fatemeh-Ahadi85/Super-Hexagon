@@ -5,29 +5,31 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Obstacles extends JLabel {
+public class Obstacles extends JComponent {
 
     protected double CX = 1786;
     protected double CY = 1432;
     protected double radius;
     protected Random random;
+    protected int i=0;
 
     protected Obstacles(double radius) {
-
         this.radius = radius;
         random = new Random();
         Timer timer = new Timer(10, e -> {
             this.radius -= 0.25;
-
+            if (radius <= 7.5) {
+                this.radius = 0;
+            }
             repaint();
         });
         timer.start();
 
     }
-    public JLabel generateObstacles() {
+    public JComponent generateObstacles() {
         Obstacles obstacle = null;
 
-        int choice = random.nextInt(2);
+        int choice = random.nextInt(3);
         if (choice == 0) {
             obstacle = new ThirdType(radius);
         }
@@ -39,6 +41,7 @@ public class Obstacles extends JLabel {
         }
         return obstacle;
     }
+
     public void checkObstacles(Panel panel,ArrayList<Obstacles> obstaclesArrayList) {
         if(radius<=7.5){
             panel.remove(this);
