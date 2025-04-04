@@ -58,7 +58,10 @@ public class SecondType extends Obstacles{
         double newY=mahlar.RotateY(ceX,ceY);
 
         if (p.contains(newX+1000, newY+1000)) {
-            System.out.println("fail!");
+            GamePanel gamePanel = new GamePanel();
+            gamePanel.frame.remove(gamePanel.panel);
+            GameOver gameOver = new GameOver();
+            gameOver.fail();
         }
 
         return p;

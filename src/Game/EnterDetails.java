@@ -69,7 +69,7 @@ public class EnterDetails extends MainMenu {
         button.addActionListener(e -> {
                     Name = getTextField().getText();
                     frame1.dispose();
-                    frame.dispose();
+                    frame.setVisible(false);
                     new GamePanel();
                 });
         return button;

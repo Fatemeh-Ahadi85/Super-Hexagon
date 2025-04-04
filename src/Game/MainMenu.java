@@ -7,9 +7,9 @@ import java.awt.*;
 import java.io.IOException;
 
 
-public class MainMenu{
+public class MainMenu {
 
-    protected JFrame frame;
+    public JFrame frame;
     protected JPanel panel;
 
     public MainMenu() {
