@@ -6,10 +6,12 @@ import java.util.List;
 
 public class Save {
 
-    private static final Gson gson = new Gson();
+    public static final Gson gson = new Gson();
     public static List<User>list;
+    public static boolean flag=true;
 
     public static void setGson(User user) {
+        if(!flag) return;
 
         list = new ArrayList<>();
         list.addAll(getUsers());

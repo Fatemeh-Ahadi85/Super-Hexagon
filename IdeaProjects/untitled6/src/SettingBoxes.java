@@ -8,5 +8,6 @@ abstract class SettingBoxes {
     public abstract JCheckBox box() throws UnsupportedAudioFileException, IOException, LineUnavailableException;
     public SettingBoxes() {
         checkBox = new JCheckBox();
+        checkBox.setSelected(true);
     }
 }

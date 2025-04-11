@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+
 
 public class GameOver extends GamePanel{
 
@@ -8,15 +8,13 @@ public class GameOver extends GamePanel{
 
     public GameOver() {
         super();
-        GameTimer timer = new GameTimer();
-        this.Time = timer.getTime();
     }
-    public void fail() throws IOException {
+    public void fail() {
         stopTimers();
-        User user = new User();
-        user.setTime(this.Time);
-        user.saveToJson();
-
+        this.Time = GameTimer.text;
+        isBestScore();
+        User.user.setTime(Time);
+        Save.setGson(User.user);
         for (Component com : panel.getComponents()) {
             panel.remove(com);
         }
@@ -41,5 +39,8 @@ public class GameOver extends GamePanel{
         if (timer1 != null) timer1.stop();
         if (timer2 != null) timer2.stop();
     }
-
+    public void isBestScore() {
+        String Score = Time.replace(':','.');
+        MainMenu.updateScore(Score);
+    }
 }

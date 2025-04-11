@@ -27,7 +27,7 @@ public class MusicBox extends SettingBoxes{
     @Override
     public JCheckBox box(){
 
-        checkBox = new JCheckBox("Enable Theme Music",true);
+        checkBox.setText("Enable Theme Music");
         checkBox.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         checkBox.setForeground(Color.black);
         checkBox.setFocusPainted(false);

@@ -67,7 +67,7 @@ public class GamePanel extends JPanel {
             });
         });
         timer2.start();
-        timer1 = new Timer(3000, e -> {
+        timer1 = new Timer(2000, e -> {
 
             Obstacles obstacles = new Obstacles(75);
             JComponent newObstacles = obstacles.generateObstacles();
@@ -78,7 +78,7 @@ public class GamePanel extends JPanel {
         timer1.start();
 
         gameTimer = new GameTimer();
-        gameTimer.setBounds(1300, 0, 300, 60);
+        gameTimer.setBounds(1250, 0, 300, 60);
         layeredPane.add(gameTimer, JLayeredPane.DRAG_LAYER);
         layeredPane.add(panel, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(pauseButton(), JLayeredPane.DRAG_LAYER);
@@ -101,9 +101,9 @@ public class GamePanel extends JPanel {
     }
 
     public JLabel bestScore() {
-        MakeLabel bestScore = new MakeLabel("BEST SCORE : 22.6        ");
+        MakeLabel bestScore = new MakeLabel("BEST SCORE : "+MainMenu.bestScore.getText());
         bestScore.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-        bestScore.setBounds(1280, 75, 300, 75);
+        bestScore.setBounds(1250, 75, 300, 75);
 
         bestScore.setOpaque(true);
         return bestScore;

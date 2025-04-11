@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class SettingPage extends MainMenu{
+public class SettingPage{
 
     public SettingPage() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         ImageIcon icon = new ImageIcon("C:\\Users\\ASUS\\Desktop\\setting.png");
         JDialog dialog = new JDialog();
         dialog.setTitle("Settings");
-        dialog.setSize(250,150);
-        dialog.setLocationRelativeTo(frame);
+        dialog.setSize(500,100);
+        dialog.setLocationRelativeTo(MainMenu.mainMenu.frame);
         dialog.setIconImage(icon.getImage());
         dialog.setLayout(new FlowLayout());
 
@@ -19,6 +19,10 @@ public class SettingPage extends MainMenu{
 
         SettingBoxes music = MusicBox.getInstance();
         settingsPanel.add(music.box());
+
+        SettingBoxes history = HistoryBox.getInstance();
+        settingsPanel.add(history.box());
+
 
         dialog.add(settingsPanel);
         dialog.setVisible(true);

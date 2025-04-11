@@ -9,6 +9,7 @@ public class MainMenu {
 
     public JFrame frame;
     protected JPanel panel;
+    public static MakeLabel bestScore;
 
     public static MainMenu mainMenu;
 
@@ -56,12 +57,17 @@ public class MainMenu {
         return startButton;
     }
     public JLabel bestScore(){
-        MakeLabel bestScore = new MakeLabel("22.6                 ");
+        bestScore = new MakeLabel("1"+"            ");
         bestScore.setFont(new Font("Digital-7", Font.ITALIC, 50));
         bestScore.setBounds(panel.getWidth()-280,280,400,70);
 
         bestScore.setOpaque(true);
         return bestScore;
+    }
+    public static void updateScore(String score){
+        if(Double.parseDouble(bestScore.getText())<Double.parseDouble(score)){
+            bestScore.setText(score);
+        }
     }
     public JLabel Score(){
         MakeLabel Score = new MakeLabel("Best Score                                             ");

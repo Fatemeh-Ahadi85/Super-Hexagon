@@ -29,5 +29,4 @@ public class GameTimer extends MakeLabel {
 
         this.setText(text);
     }
-
 }
