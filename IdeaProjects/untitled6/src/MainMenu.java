@@ -57,7 +57,7 @@ public class MainMenu {
         return startButton;
     }
     public JLabel bestScore(){
-        bestScore = new MakeLabel("1"+"            ");
+        bestScore = new MakeLabel("0"+"            ");
         bestScore.setFont(new Font("Digital-7", Font.ITALIC, 50));
         bestScore.setBounds(panel.getWidth()-280,280,400,70);
 

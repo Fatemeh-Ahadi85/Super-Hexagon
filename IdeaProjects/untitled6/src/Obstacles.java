@@ -18,7 +18,6 @@ public class Obstacles extends JComponent {
             repaint();
         });
         timer.start();
-
     }
     public JComponent generateObstacles() {
         Obstacles obstacle = null;

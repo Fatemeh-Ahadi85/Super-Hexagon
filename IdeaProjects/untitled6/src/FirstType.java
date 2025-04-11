@@ -19,8 +19,6 @@ public class FirstType extends Obstacles {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setStroke(new BasicStroke(5));
 
-        mahlar.repaint();
-
 
         for (int i=0;i<3;i++) {
             g2d.setColor(new Color(5, 5, 5));

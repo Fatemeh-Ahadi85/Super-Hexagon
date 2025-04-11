@@ -11,6 +11,7 @@ public class GamePanel extends JPanel {
     protected Timer timer2;
     public static GamePanel gamePanel;
     public GameTimer gameTimer;
+    public int i=1;
 
 
     public GamePanel() {
@@ -67,8 +68,8 @@ public class GamePanel extends JPanel {
             });
         });
         timer2.start();
-        timer1 = new Timer(2000, e -> {
-
+        timer1 = new Timer(3000, e -> {
+            changeColor();
             Obstacles obstacles = new Obstacles(75);
             JComponent newObstacles = obstacles.generateObstacles();
             newObstacles.setBounds(-1000, -1000, 3000, 3000);
@@ -134,6 +135,18 @@ public class GamePanel extends JPanel {
                 }
             }
         }
+    }
+    public void changeColor(){
+        Color[]BackGround1 = {
+                new Color(255, 230, 240),
+                new Color(241, 226, 152),
+                new Color(219, 244, 192, 255),
+                new Color(169, 246, 225, 255),
+        };
+        panel.setBackground(BackGround1[i]);
+        if(i==3)i=-1;
+        i++;
+
     }
 }
 

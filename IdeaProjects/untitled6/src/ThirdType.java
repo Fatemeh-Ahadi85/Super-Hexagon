@@ -21,8 +21,6 @@ public class ThirdType extends Obstacles {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setStroke(new BasicStroke(5));
 
-        mahlar.repaint();
-
         for (int i = 0; i < 6; i++) {
             if (i == m) {
                 continue;
