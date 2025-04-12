@@ -31,11 +31,17 @@ public class Mahlar extends JLabel {
     }
 
     public double RotateX(double x, double y) {
-        centerX = CX + (x - CX) * Math.cos(Math.toRadians(theta)) - (y - CY) * Math.sin(Math.toRadians(theta));
+        double sinTheta = Math.sin(Math.toRadians(theta));
+        double cosTheta = Math.cos(Math.toRadians(theta));
+
+        centerX = CX + (x - CX) * cosTheta - (y - CY) * sinTheta;
         return centerX;
     }
     public double RotateY(double x, double y) {
-        centerY = CY + (x - CX) * Math.sin(Math.toRadians(theta)) + (y - CY) * Math.cos(Math.toRadians(theta));
+        double sinTheta = Math.sin(Math.toRadians(theta));
+        double cosTheta = Math.cos(Math.toRadians(theta));
+
+        centerY = CY + (x - CX) * sinTheta + (y - CY) * cosTheta;
         return centerY;
     }
     public void paintComponent(Graphics g) {

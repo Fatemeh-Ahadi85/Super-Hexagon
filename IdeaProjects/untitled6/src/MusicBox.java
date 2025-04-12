@@ -9,7 +9,7 @@ public class MusicBox extends SettingBoxes{
     private static MusicBox instance;
 
     public MusicBox() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        File musicFile = new File("C:\\Users\\ASUS\\Downloads\\Super Hexagon.wav");
+        File musicFile = new File("C:\\Users\\ASUS\\Downloads\\Super Hexagon Soundtrack - Hexagoner (1).wav");
         AudioInputStream stream = AudioSystem.getAudioInputStream(musicFile);
         clip = AudioSystem.getClip();
         clip.open(stream);
@@ -31,7 +31,6 @@ public class MusicBox extends SettingBoxes{
         checkBox.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         checkBox.setForeground(Color.black);
         checkBox.setFocusPainted(false);
-
 
         checkBox.addActionListener(e -> {
             if (checkBox.isSelected()&&!clip.isRunning()) {

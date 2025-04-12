@@ -15,6 +15,7 @@ public class GameOver extends GamePanel{
         isBestScore();
         User.user.setTime(Time);
         Save.setGson(User.user);
+
         for (Component com : panel.getComponents()) {
             panel.remove(com);
         }
@@ -28,16 +29,14 @@ public class GameOver extends GamePanel{
         layeredPane.revalidate();
         layeredPane.repaint();
 
+        frame.revalidate();
+        frame.repaint();
 
         JOptionPane.showMessageDialog(null, "Game Over!", "Game Over!", JOptionPane.INFORMATION_MESSAGE);
-
     }
     public void stopTimers() {
-        GameTimer gameTimer = new GameTimer();
-        if(gameTimer.timer != null) gameTimer.timer.stop();
-        if (timer != null) timer.stop();
-        if (timer1 != null) timer1.stop();
-        if (timer2 != null) timer2.stop();
+        GamePanel.gamePanel.StopTimer();
+
     }
     public void isBestScore() {
         String Score = Time.replace(':','.');

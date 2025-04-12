@@ -22,18 +22,23 @@ public class DrawLine extends JLabel {
 
         for(int i = 0;i < 6;i++) {
             Polygon p = new Polygon();
-            double x = CX + radius * Math.cos(Math.toRadians(theta));
-            double y = CY + radius * Math.sin(Math.toRadians(theta));
+            double sinTheta = Math.sin(Math.toRadians(theta));
+            double cosTheta = Math.cos(Math.toRadians(theta));
+
+            double x = CX + radius * cosTheta;
+            double y = CY + radius * sinTheta;
             p.addPoint((int) x, (int) y);
-            double xOuter = CX + (radius * 5000) * Math.cos(Math.toRadians(theta));
-            double yOuter = CY + (radius * 5000) * Math.sin(Math.toRadians(theta));
+            double xOuter = CX + (radius * 20) * cosTheta;
+            double yOuter = CY + (radius * 20) * sinTheta;
             p.addPoint((int) xOuter, (int) yOuter);
             theta += 60;
-            double xOuter1 = CX + (radius * 5000) * Math.cos(Math.toRadians(theta));
-            double yOuter1 = CY + (radius * 5000) * Math.sin(Math.toRadians(theta));
+            sinTheta = Math.sin(Math.toRadians(theta));
+            cosTheta = Math.cos(Math.toRadians(theta));
+            double xOuter1 = CX + (radius * 20) * cosTheta;
+            double yOuter1 = CY + (radius * 20) * sinTheta;
             p.addPoint((int) xOuter1, (int) yOuter1);
-            double x1 = CX + radius * Math.cos(Math.toRadians(theta));
-            double y1 = CY + radius * Math.sin(Math.toRadians(theta));
+            double x1 = CX + radius * cosTheta;
+            double y1 = CY + radius * sinTheta;
             p.addPoint((int) x1, (int) y1);
 
             if (i % 2 == 0) {

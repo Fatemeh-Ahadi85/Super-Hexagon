@@ -38,7 +38,7 @@ public class MainMenu {
         centralHexagon.setBounds(0, 0, 1536, 864);
         panel.add(centralHexagon);
         DrawLine drawLine = new DrawLine(250);
-        drawLine.setBounds(-1000, -1000, 15360, 8640);
+        drawLine.setBounds(-1000, -1000, 3000, 3000);
         panel.add(drawLine);
 
         frame.add(panel);
@@ -57,7 +57,7 @@ public class MainMenu {
         return startButton;
     }
     public JLabel bestScore(){
-        bestScore = new MakeLabel("0"+"            ");
+        bestScore = new MakeLabel("0"+"    ");
         bestScore.setFont(new Font("Digital-7", Font.ITALIC, 50));
         bestScore.setBounds(panel.getWidth()-280,280,400,70);
 

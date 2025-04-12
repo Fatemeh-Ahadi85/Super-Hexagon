@@ -8,7 +8,6 @@ public class EnterDetails{
         ImageIcon icon = new ImageIcon("C:\\Users\\ASUS\\Desktop\\icon.jpg");
         frame1 = new JFrame();
         frame1.setTitle("Enter Details");
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setSize(500, 300);
         frame1.setLocation(518,282);
         frame1.setLayout(null);

@@ -7,19 +7,51 @@ public class GamePanel extends JPanel {
     protected JPanel panel;
     protected double theta = 0;
     protected Timer timer;
-    protected Timer timer1;
-    protected Timer timer2;
     public static GamePanel gamePanel;
     public GameTimer gameTimer;
     public int i=1;
+    public int m=0;
+    private boolean isGameOver = false;
 
 
     public GamePanel() {
         gamePanel = this;
-        timer = new Timer(25, e -> {
-            theta += 0.5;
-            panel.repaint();
-        });
+        if(!isGameOver) {
+            timer = new Timer(25, e -> {
+                if (!isGameOver) {
+                    //  return;
+                    m += 30;
+                    if (m >= 1500) {
+                        changeColor();
+                        Obstacles obstacles = new Obstacles(75);
+                        JComponent newObstacles = obstacles.generateObstacles();
+                        newObstacles.setBounds(-1000, -1000, 3000, 3000);
+                        panel.add(newObstacles);
+                        panel.setComponentZOrder(newObstacles, 1);
+
+                        if (newObstacles instanceof Obstacles) {
+                            ((Obstacles) newObstacles).timer.start();
+                        }
+                        m = 0;
+                    }
+                    for(Timer time : Obstacles.deleteTimer){
+                        time.stop();
+                    }
+                    SwingUtilities.invokeLater(() -> {
+                        for (Component com : panel.getComponents()) {
+                            if (com instanceof Obstacles) {
+                                if (((Obstacles) com).radius <= 7.5) {
+                                    panel.remove(com);
+                                    panel.revalidate();
+                                }
+                            }
+                        }
+                    });
+                    theta += 0.55;
+                    panel.repaint();
+                }
+            });
+        }
         timer.start();
         frame = MainMenu.mainMenu.frame;
 
@@ -51,32 +83,7 @@ public class GamePanel extends JPanel {
         mahlar.setBounds(0, 0, 1536, 864);
         panel.add(mahlar);
         panel.setComponentZOrder(mahlar, 0);
-        timer2 = new Timer(25, e -> {
-            SwingUtilities.invokeLater(() -> {
-                for (Component com : panel.getComponents()) {
-                    if (com instanceof Obstacles) {
-                        if (((Obstacles) com).radius <= 7.5) {
-                            if (((Obstacles) com).timer != null) {
-                                ((Obstacles) com).timer.stop();
-                            }
-                            panel.remove(com);
-                            panel.revalidate();
-                            panel.repaint();
-                        }
-                    }
-                }
-            });
-        });
-        timer2.start();
-        timer1 = new Timer(3000, e -> {
-            changeColor();
-            Obstacles obstacles = new Obstacles(75);
-            JComponent newObstacles = obstacles.generateObstacles();
-            newObstacles.setBounds(-1000, -1000, 3000, 3000);
-            panel.add(newObstacles);
-            panel.setComponentZOrder(newObstacles, 1);
-        });
-        timer1.start();
+
 
         gameTimer = new GameTimer();
         gameTimer.setBounds(1250, 0, 300, 60);
@@ -100,7 +107,6 @@ public class GamePanel extends JPanel {
 
         return pauseButton;
     }
-
     public JLabel bestScore() {
         MakeLabel bestScore = new MakeLabel("BEST SCORE : "+MainMenu.bestScore.getText());
         bestScore.setFont(new Font("Times New Roman", Font.PLAIN, 24));
@@ -109,32 +115,23 @@ public class GamePanel extends JPanel {
         bestScore.setOpaque(true);
         return bestScore;
     }
-
     public void StopTimer() {
+        isGameOver = true;
+
         if (timer != null) timer.stop();
-        if (timer1 != null) timer1.stop();
-        if (timer2 != null) timer2.stop();
+
         if (gameTimer.timer != null) gameTimer.timer.stop();
-        for (Component com : panel.getComponents()) {
-            if (com instanceof Obstacles) {
-                if (((Obstacles) com).timer != null) {
-                    ((Obstacles) com).timer.stop();
-                }
-            }
+        for (Timer time : Obstacles.timers){
+            time.stop();
         }
     }
     public void RunTimer() {
         if (timer != null) timer.start();
-        if (timer1 != null) timer1.start();
-        if (timer2 != null) timer2.start();
         if (gameTimer.timer != null) gameTimer.timer.start();
-        for (Component com : panel.getComponents()) {
-            if (com instanceof Obstacles) {
-                if (((Obstacles) com).timer != null) {
-                    ((Obstacles) com).timer.start();
-                }
-            }
+        for (Timer time : Obstacles.timers){
+            time.start();
         }
+        isGameOver = false;
     }
     public void changeColor(){
         Color[]BackGround1 = {
@@ -146,7 +143,6 @@ public class GamePanel extends JPanel {
         panel.setBackground(BackGround1[i]);
         if(i==3)i=-1;
         i++;
-
     }
 }
 
